@@ -1,0 +1,28 @@
+/* Style untuk Latar Belakang */
+#vantajs-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1; /* Agar berada di belakang konten */
+  }
+  
+  /* Style untuk Konten */
+  .content {
+    position: relative;
+    text-align: center;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    margin-top: 30vh;
+  }
+  
+  .content h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+  }
+  
+  .content p {
+    font-size: 1.5rem;
+  }
+  

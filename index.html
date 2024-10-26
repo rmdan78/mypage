@@ -1,70 +1,40 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio - Luar Angkasa</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Space Globe Effect</title>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Three.js Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r123/three.min.js"></script>
+  
+  <!-- Vanta.js Globe Effect -->
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
 </head>
 <body>
-    <section class="section section-1">
-    <div class="nama">
-        MUHAMMAD RAMDAN
-    </div>
-    <nav class="navbar">
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
 
-    <video autoplay muted loop playsinline class="bg-video">
-        <source src="assets/background.mp4" type="video/mp4">
-        Browser Anda tidak mendukung video ini.
-    </video>
+  <!-- Background Container -->
+  <div id="vantajs-bg"></div>
 
-    <div class="content">
-        <h1>Personal Portofolio</h1>
-        <p>Data Science | A.I Engineer</p>
-    </div>
-    </section>
-    <section class="section section-2">
-        <video autoplay muted loop playsinline class="bg-video">
-            <source src="assets/bg-about.mp4" type="video/mp4">
-            Browser Anda tidak mendukung video ini.
-        </video>
-        <div class="content">
-            <h2>Proyek Saya</h2>
-            <p>Temukan proyek-proyek yang sudah saya kerjakan.</p>
-        </div>
-    </section>
+  <!-- Content -->
+  <div class="content">
+    
+  </div>
 
+  <!-- Initialize Vanta.js -->
+  <script>
+    VANTA.GLOBE({
+      el: document.getElementById("vantajs-bg"),
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: true,
+      color: 0x0077ff,        // Set the globe color
+      backgroundColor: 0x0d0d0d, // Background color
+    });
+  </script>
 
-
-    <section class="section section-3">
-        <video autoplay muted loop playsinline class="bg-video">
-            <source src="assets/bg-project.mp4" type="video/mp4">
-            Browser Anda tidak mendukung video ini.
-        </video>
-        <div class="content">
-            <h2>Proyek Saya</h2>
-            <p>Temukan proyek-proyek yang sudah saya kerjakan.</p>
-        </div>
-    </section>
-
-
-
-    <section class="section section-4">
-        <video autoplay muted loop playsinline class="bg-video">
-            <source src="assets/bg-cntk.mp4" type="video/mp4">
-            Browser Anda tidak mendukung video ini.
-        </video>
-        <div class="content">
-            <h2>Proyek Saya</h2>
-            <p>Temukan proyek-proyek yang sudah saya kerjakan.</p>
-        </div>
-    </section>
 </body>
 </html>
