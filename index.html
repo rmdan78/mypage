@@ -50,6 +50,8 @@
   <!-- Projects Section -->
 
   <section class="projects-section">
+    <h2 class="projects-header">My Projects</h2> <!-- Header My Projects -->
+    <p id="projects-typed-text"></p> <!-- Elemen untuk teks animasi -->
     <div class="projects-container">
       <div class="project-card" onclick="showDescription('Project 1', 'Deskripsi lengkap proyek 1')">
         <img src="project1.jpg" alt="Project 1" />
@@ -116,7 +118,7 @@ VANTA.GLOBE({
     }
   });
   // Tambahkan teks deskripsi profil
-const profileTextArray = [
+  const profileTextArray = [
   "Hello! I'm Muhammad Ramdan, an AI Engineer and Data Scientist with a passion for building intelligent solutions.",
   "I love transforming raw data into actionable insights and creating automated systems that make a real impact.",
   "With expertise in machine learning, data analysis, and web development, I thrive on solving complex problems."
@@ -126,23 +128,23 @@ let profileCharIndex = 0;
 
 function typeProfileText() {
   const profileDescElement = document.getElementById('profile-desc');
+
   if (profileCharIndex < profileTextArray[profileTextIndex].length) {
     profileDescElement.textContent += profileTextArray[profileTextIndex].charAt(profileCharIndex);
     profileCharIndex++;
     setTimeout(typeProfileText, 50); // Kecepatan mengetik
-  } else {
-    // Jeda sebelum melanjutkan ke kalimat berikutnya
-    profileTextIndex = (profileTextIndex + 1) % profileTextArray.length;
-    profileCharIndex = 0; // Reset karakter index
-    setTimeout(typeProfileText, 500); // Jeda sebelum mengetik teks berikutnya
+  } else if (profileTextIndex < profileTextArray.length - 1) {
+    // Lanjut ke kalimat berikutnya jika masih ada
+    profileTextIndex++;
+    profileCharIndex = 0; // Reset index karakter
+    setTimeout(typeProfileText, 1000); // Jeda sebelum mengetik kalimat berikutnya
   }
 }
 
+// Jalankan fungsi mengetik setelah DOM siap
 document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(typeText, 500); // Teks di bagian utama
-  setTimeout(typeProfileText, 1000); // Teks di bagian profil
+  setTimeout(typeProfileText, 1000); // Mulai setelah 1 detik
 });
-
   const typedText = document.getElementById('typed-text');
   const textArray = [
     "Hi, I design intelligent systems to solve real-world problems.",
@@ -208,7 +210,36 @@ document.addEventListener('DOMContentLoaded', () => {
   
     type();
   }
-  
+  const projectsTextArray = [
+  "Here are some of the projects I've worked on.",
+  "Click a project for more details!",
+  "Reach out if you're curious about my work."
+];
+let projectsTextIndex = 0;
+let projectsCharIndex = 0;
+
+function typeProjectsText() {
+  const projectsDescElement = document.getElementById('projects-typed-text');
+
+  if (projectsCharIndex < projectsTextArray[projectsTextIndex].length) {
+    projectsDescElement.textContent += projectsTextArray[projectsTextIndex].charAt(projectsCharIndex);
+    projectsCharIndex++;
+    setTimeout(typeProjectsText, 50); // Kecepatan mengetik
+  } else if (projectsTextIndex < projectsTextArray.length - 1) {
+    // Lanjut ke kalimat berikutnya jika masih ada
+    projectsTextIndex++;
+    projectsCharIndex = 0; // Reset index karakter
+    setTimeout(() => {
+      typeProjectsText(); // Mulai mengetik kalimat berikutnya
+    }, 1000); // Jeda sebelum mengetik kalimat berikutnya
+  }
+}
+
+// Jalankan fungsi mengetik setelah DOM siap
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(typeProjectsText, 1000); // Mulai setelah 1 detik
+});
+
   </script>
 
 </body>
