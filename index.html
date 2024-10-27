@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Three.js Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r123/three.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Vanta.js Globe Effect -->
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+</head>
+<body>
+
+  <!-- Background Container -->
+  <div id="vantajs-bg"></div>
+
+  <!-- Navbar -->
+  <div class="navbar-container" id="navbar-container">
+    <div class="nama" id="nama">MUHAMMAD RAMDAN</div>
+    <ul class="navbar" id="navbar">
+      <li><a href="#home">HOME</a></li>
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#projects">PROJECTS</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+  </div>
+
+  <!-- Content -->
+  <div class="headline">
+    <span id="typed-text"></span><span class="cursor">|</span>
+  </div>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="about-container">
+      <div class="profile-image">
+        <img src="asset/my pict.jpg" alt="Muhammad Ramdan" />
+      </div>
+     <div class="profile-description" id="profile-description">
+  <h2>About Me</h2>
+  <p id="profile-desc"></p> <!-- Tambahkan ID di sini -->
+</div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+
+  <section class="projects-section" id="projects">
+    <h2 class="projects-header">My Projects</h2> <!-- Header My Projects -->
+    <p id="projects-typed-text"></p> <!-- Elemen untuk teks animasi -->
+    <div class="projects-container">
+      <div class="project-card" onclick="showDescription('Project AI Image Classification', 'Proyek ini bertujuan untuk mengklasifikasikan gambar menggunakan model pembelajaran mendalam.')">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlpzrCj0260gL0baI-meSLiu3p8FjOZyxe1g&s" alt="Project AI Image Classification" />
+        <h3>AI Image Classification</h3>
+    </div>
+    <div class="project-card" onclick="showDescription('Project Natural Language Processing', 'Proyek ini menggunakan teknik NLP untuk analisis sentimen.')">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnt5G4qNgBgbt3ktZ-SPOgSQngH-M5CA0mQQ&s" alt="Project Natural Language Processing" />
+        <h3>Natural Language Processing</h3>
+    </div>
+    <div class="project-card" onclick="showDescription('Project Predictive Analytics', 'Proyek ini menggunakan data historis untuk memprediksi tren masa depan.')">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTURBaN_z2Wz7fw-UEJ30_EcCdi8W-ZtSgfTQ&s" alt="Project Predictive Analytics" />
+        <h3>Predictive Analytics</h3>
+    </div>
+    <div class="project-card" onclick="showDescription('Project Robotics', 'Proyek ini fokus pada pengembangan robot otonom untuk berbagai aplikasi.')">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-PiocXvj6vJpUtsGwld85yyiXMJiEPibdcw&s" alt="Project Robotics" />
+        <h3>Robotics</h3>
+    </div>
+    <div class="project-card" onclick="showDescription('Project AI in Healthcare', 'Proyek ini bertujuan untuk menerapkan AI dalam diagnosis dan perawatan kesehatan.')">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7_74ZPNxBR3wMKRYIZaMVr4G5yEIN1_AVyw&s" alt="Project AI in Healthcare" />
+        <h3>AI in Healthcare</h3>
+    </div>
+    <div class="project-card" onclick="showDescription('Project Fraud Detection', 'Proyek ini mengembangkan model untuk mendeteksi penipuan dalam transaksi keuangan.')">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHarUaaj5yMkyJP_aTH_AX9zHuuA5-aOgNhA&s" alt="Project Fraud Detection" />
+        <h3>Fraud Detection</h3>
+    </div>
+    <div class="project-card" onclick="showDescription('Project Autonomous Vehicles', 'Proyek ini berfokus pada pengembangan kendaraan otonom menggunakan teknologi AI.')">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxhr7MUpfe2pnM1SLeYJ40tihl6HK-JfTNPA&s" alt="Project Autonomous Vehicles" />
+        <h3>Autonomous Vehicles</h3>
+    </div>
+    <div class="project-card" onclick="showDescription('Project Smart Home Automation', 'Proyek ini menggunakan AI untuk mengotomatisasi sistem rumah pintar.')">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXmWlWJ9xZpLE6Z4NJhNnS-62EV3Cl-DhMPQ&s" alt="Project Smart Home Automation" />
+        <h3>Smart Home Automation</h3>
+    </div>
+    <div class="project-card" onclick="showDescription('Project AI-driven Marketing', 'Proyek ini menggunakan AI untuk menganalisis data pemasaran dan memberikan rekomendasi.')">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdEuO5nRipwXXgAVMS9i6PQHyM6-X8qwajAg&s" alt="Project AI-driven Marketing" />
+        <h3>AI-driven Marketing</h3>
+    </div>
+    
+      <!-- Tambahkan lebih banyak proyek sesuai kebutuhan -->
+    </div>
+    <div id="overlay" class="overlay" onclick="hideDescription()">
+      <div id="description" class="description"></div>
+    </div>
+  </section>
+  
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+  <h2 class="contact-header">Contact Me</h2>
+  <p id="contact-typed-text"></p>
+  <form class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <input placeholder="Your Message" required></input>
+      <button type="submit">Send</button>
+  </form>
+  <div class="social-media">
+    <a href="https://www.instagram.com/yourusername" target="_blank">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/yourusername" target="_blank">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://github.com/yourusername" target="_blank">
+      <i class="fab fa-github"></i>
+    </a>
+  </div>
+</section>
+
+  <!-- Initialize Vanta.js -->
+  <script>
+ // Initialize Vanta.js
+VANTA.GLOBE({
+    el: document.getElementById("vantajs-bg"),
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: true,
+    color: 0x0077ff,
+    backgroundColor: 0x0d0d0d,
+  });
+  
+  window.addEventListener('scroll', () => {
+    const navbarContainer = document.getElementById('navbar-container');
+    if (window.scrollY > 50) {
+      navbarContainer.style.opacity = '0'; // Sembunyikan saat scroll
+    } else {
+      navbarContainer.style.opacity = '1'; // Tampilkan kembali saat di atas
+    }
+  });
+  // Tambahkan teks deskripsi profil
+  const profileTextArray = [
+  "Hello! I'm Muhammad Ramdan, an AI Engineer and Data Scientist with a passion for building intelligent solutions.",
+  "I love transforming raw data into actionable insights and creating automated systems that make a real impact.",
+  "With expertise in machine learning, data analysis, and web development, I thrive on solving complex problems."
+];
+let profileTextIndex = 0;
+let profileCharIndex = 0;
+
+function typeProfileText() {
+  const profileDescElement = document.getElementById('profile-desc');
+
+  if (profileCharIndex < profileTextArray[profileTextIndex].length) {
+    profileDescElement.textContent += profileTextArray[profileTextIndex].charAt(profileCharIndex);
+    profileCharIndex++;
+    setTimeout(typeProfileText, 50); // Kecepatan mengetik
+  } else if (profileTextIndex < profileTextArray.length - 1) {
+    // Lanjut ke kalimat berikutnya jika masih ada
+    profileTextIndex++;
+    profileCharIndex = 0; // Reset index karakter
+    setTimeout(typeProfileText, 1000); // Jeda sebelum mengetik kalimat berikutnya
+  }
+}
+
+// Jalankan fungsi mengetik setelah DOM siap
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(typeProfileText, 1000); // Mulai setelah 1 detik
+});
+  const typedText = document.getElementById('typed-text');
+  const textArray = [
+    "Hi, I design intelligent systems to solve real-world problems.",
+    "Transforming raw data into automated solutions—one algorithm at a time.",
+    "Passionate about building AI models that shape the future."
+  ];
+  let textIndex = 0;
+  let charIndex = 0;
+  
+  function typeText() {
+    if (charIndex < textArray[textIndex].length) {
+      typedText.textContent += textArray[textIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(typeText, 100); // Kecepatan mengetik
+    } else {
+      setTimeout(eraseText, 2000); // Jeda sebelum menghapus
+    }
+  }
+  
+  function eraseText() {
+    if (charIndex > 0) {
+      typedText.textContent = textArray[textIndex].substring(0, charIndex - 1);
+      charIndex--;
+      setTimeout(eraseText, 50); // Kecepatan penghapusan
+    } else {
+      textIndex = (textIndex + 1) % textArray.length; // Beralih ke teks berikutnya
+      setTimeout(typeText, 1000);
+    }
+  }
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(typeText, 500);
+  });
+  
+  // Fungsi untuk menampilkan deskripsi proyek
+  function showDescription(title, description) {
+    const overlay = document.getElementById('overlay');
+    const descriptionContainer = document.getElementById('description');
+  
+    overlay.style.display = 'flex'; // Tampilkan overlay
+    descriptionContainer.innerHTML = `<h2>${title}</h2><p></p>`;
+    
+    typeDescriptionText(descriptionContainer.querySelector('p'), description);
+  }
+  
+  // Fungsi untuk menyembunyikan deskripsi
+  function hideDescription() {
+    const overlay = document.getElementById('overlay');
+    overlay.style.display = 'none'; // Sembunyikan overlay
+  }
+  
+  // Fungsi mengetik untuk deskripsi proyek
+  function typeDescriptionText(element, text) {
+    let index = 0;
+  
+    function type() {
+      if (index < text.length) {
+        element.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(type, 50); // Kecepatan mengetik
+      }
+    }
+  
+    type();
+  }
+  const projectsTextArray = [
+  "Here are some of the projects I've worked on.",
+  "Click a project for more details!",
+  "Reach out if you're curious about my work."
+];
+let projectsTextIndex = 0;
+let projectsCharIndex = 0;
+
+function typeProjectsText() {
+  const projectsDescElement = document.getElementById('projects-typed-text');
+
+  if (projectsCharIndex < projectsTextArray[projectsTextIndex].length) {
+    projectsDescElement.textContent += projectsTextArray[projectsTextIndex].charAt(projectsCharIndex);
+    projectsCharIndex++;
+    setTimeout(typeProjectsText, 50); // Kecepatan mengetik
+  } else if (projectsTextIndex < projectsTextArray.length - 1) {
+    // Lanjut ke kalimat berikutnya jika masih ada
+    projectsTextIndex++;
+    projectsCharIndex = 0; // Reset index karakter
+    setTimeout(() => {
+      projectsDescElement.textContent = "";
+      typeProjectsText(); // Mulai mengetik kalimat berikutnya
+    }, 1000); // Jeda sebelum mengetik kalimat berikutnya
+  }
+}
+
+// Jalankan fungsi mengetik setelah DOM siap
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(typeProjectsText, 1000); // Mulai setelah 1 detik
+});
+
+// Teks animasi untuk kontak
+const contactTextArray = [
+    "Feel free to reach out to me!",
+    "I'm always open to new opportunities.",
+    "Let's connect and discuss your ideas."
+];
+let contactTextIndex = 0;
+let contactCharIndex = 0;
+
+function typeContactText() {
+    const contactElement = document.getElementById('contact-typed-text');
+
+    if (contactCharIndex < contactTextArray[contactTextIndex].length) {
+        contactElement.textContent += contactTextArray[contactTextIndex].charAt(contactCharIndex);
+        contactCharIndex++;
+        setTimeout(typeContactText, 100); // Kecepatan mengetik
+    } else if (contactTextIndex < contactTextArray.length - 1) {
+        // Lanjut ke kalimat berikutnya jika masih ada
+        contactTextIndex++;
+        contactCharIndex = 0; // Reset index karakter
+        setTimeout(() => {
+            contactElement.textContent = ""; // Hapus teks sebelum mengetik yang baru
+            typeContactText();
+        }, 1000); // Jeda sebelum mengetik kalimat berikutnya
+    }
+}
+
+// Jalankan fungsi mengetik setelah DOM siap
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(typeContactText, 1000); // Mulai setelah 1 detik
+});
+
+  </script>
+
+</body>
+</html>
