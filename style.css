@@ -205,8 +205,9 @@ body {
 .contact-header {
     font-size: 2.5em;
     margin-bottom: 20px;
-    animation: fadeIn 1s; /* Animasi muncul */
+    animation: fadeIn 3s; /* Animasi muncul */
 }
+
 
 .contact-form {
     display: inline-block;
@@ -278,4 +279,8 @@ body {
   opacity: 0.8;
 }
 
-
+@media (max-width: 768px) {
+  .navbar {
+      display: none; /* Menyembunyikan navbar */
+  }
+}
