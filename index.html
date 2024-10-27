@@ -107,17 +107,17 @@
       <input placeholder="Your Message" required></input>
       <button type="submit">Send</button>
   </form>
-  <div class="social-media">
-    <a href="https://www.instagram.com/yourusername" target="_blank">
-      <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://www.linkedin.com/in/yourusername" target="_blank">
-      <i class="fab fa-linkedin"></i>
-    </a>
-    <a href="https://github.com/yourusername" target="_blank">
-      <i class="fab fa-github"></i>
-    </a>
-  </div>
+<div class="social-media">
+  <a href="https://www.instagram.com/yourusername" target="_blank">
+    <i class="fab fa-instagram"></i>
+  </a>
+  <a href="https://www.linkedin.com/in/yourusername" target="_blank">
+    <i class="fab fa-linkedin"></i>
+  </a>
+  <a href="https://github.com/yourusername" target="_blank">
+    <i class="fab fa-github"></i>
+  </a>
+</div>
 </section>
 
   <!-- Initialize Vanta.js -->
@@ -168,40 +168,8 @@ function typeProfileText() {
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(typeProfileText, 1000); // Mulai setelah 1 detik
 });
-  const typedText = document.getElementById('typed-text');
-  const textArray = [
-    "Hi, I design intelligent systems to solve real-world problems.",
-    "Transforming raw data into automated solutions—one algorithm at a time.",
-    "Passionate about building AI models that shape the future."
-  ];
-  let textIndex = 0;
-  let charIndex = 0;
-  
-  function typeText() {
-    if (charIndex < textArray[textIndex].length) {
-      typedText.textContent += textArray[textIndex].charAt(charIndex);
-      charIndex++;
-      setTimeout(typeText, 100); // Kecepatan mengetik
-    } else {
-      setTimeout(eraseText, 2000); // Jeda sebelum menghapus
-    }
-  }
-  
-  function eraseText() {
-    if (charIndex > 0) {
-      typedText.textContent = textArray[textIndex].substring(0, charIndex - 1);
-      charIndex--;
-      setTimeout(eraseText, 50); // Kecepatan penghapusan
-    } else {
-      textIndex = (textIndex + 1) % textArray.length; // Beralih ke teks berikutnya
-      setTimeout(typeText, 1000);
-    }
-  }
-  
-  document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(typeText, 500);
-  });
-  
+
+
   // Fungsi untuk menampilkan deskripsi proyek
   function showDescription(title, description) {
     const overlay = document.getElementById('overlay');
@@ -233,68 +201,96 @@ document.addEventListener('DOMContentLoaded', () => {
   
     type();
   }
-  const projectsTextArray = [
+
+  
+const textArray = [
+  "Welcome to my portfolio!",
+  "Explore my work and projects!",
+  "Let's create something amazing together."
+];
+
+let textIndex = 0;
+let charIndex = 0;
+const typedText = document.getElementById('typed-text');
+
+function typeText() {
+  if (charIndex < textArray[textIndex].length) {
+    typedText.textContent += textArray[textIndex].charAt(charIndex);
+    charIndex++;
+    setTimeout(typeText, 50); // Kecepatan mengetik
+  } else {
+    setTimeout(eraseText, 2000); // Jeda sebelum penghapusan
+  }
+}
+
+function eraseText() {
+  if (charIndex > 0) {
+    typedText.textContent = textArray[textIndex].substring(0, charIndex - 1);
+    charIndex--;
+    setTimeout(eraseText, 50); // Kecepatan penghapusan
+  } else {
+    textIndex = (textIndex + 1) % textArray.length;
+    setTimeout(typeText, 1000); // Jeda sebelum mengetik ulang
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(typeText, 500); // Mulai setelah 500ms
+});
+
+// Fungsi mengetik dan menghapus untuk Projects & Contact
+function typeAndEraseText(element, textArray) {
+  let arrayIndex = 0;
+  let charIndex = 0;
+
+  function type() {
+    if (charIndex < textArray[arrayIndex].length) {
+      element.textContent += textArray[arrayIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(type, 50); // Kecepatan mengetik
+    } else {
+      setTimeout(erase, 2000); // Jeda sebelum penghapusan
+    }
+  }
+
+  function erase() {
+    if (charIndex > 0) {
+      element.textContent = textArray[arrayIndex].substring(0, charIndex - 1);
+      charIndex--;
+      setTimeout(erase, 50); // Kecepatan penghapusan
+    } else {
+      arrayIndex = (arrayIndex + 1) % textArray.length;
+      setTimeout(type, 1000); // Jeda sebelum mengetik ulang
+    }
+  }
+
+  type();
+}
+
+// Jalankan fungsi mengetik untuk Projects & Contact saat DOM siap
+document.addEventListener('DOMContentLoaded', () => {
+  setTimeout(() => {
+    const projectsElement = document.getElementById('projects-typed-text');
+    const contactElement = document.getElementById('contact-typed-text');
+
+    // Ketik dan hapus teks secara berulang
+    typeAndEraseText(projectsElement, projectsTextArray);
+    typeAndEraseText(contactElement, contactTextArray);
+  }, 1000); // Mulai setelah 1 detik
+});
+
+// Array teks untuk Projects dan Contact
+const projectsTextArray = [
   "Here are some of the projects I've worked on.",
   "Click a project for more details!",
   "Reach out if you're curious about my work."
 ];
-let projectsTextIndex = 0;
-let projectsCharIndex = 0;
 
-function typeProjectsText() {
-  const projectsDescElement = document.getElementById('projects-typed-text');
-
-  if (projectsCharIndex < projectsTextArray[projectsTextIndex].length) {
-    projectsDescElement.textContent += projectsTextArray[projectsTextIndex].charAt(projectsCharIndex);
-    projectsCharIndex++;
-    setTimeout(typeProjectsText, 50); // Kecepatan mengetik
-  } else if (projectsTextIndex < projectsTextArray.length - 1) {
-    // Lanjut ke kalimat berikutnya jika masih ada
-    projectsTextIndex++;
-    projectsCharIndex = 0; // Reset index karakter
-    setTimeout(() => {
-      projectsDescElement.textContent = "";
-      typeProjectsText(); // Mulai mengetik kalimat berikutnya
-    }, 1000); // Jeda sebelum mengetik kalimat berikutnya
-  }
-}
-
-// Jalankan fungsi mengetik setelah DOM siap
-document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(typeProjectsText, 1000); // Mulai setelah 1 detik
-});
-
-// Teks animasi untuk kontak
 const contactTextArray = [
-    "Feel free to reach out to me!",
-    "I'm always open to new opportunities.",
-    "Let's connect and discuss your ideas."
+  "Feel free to reach out to me!",
+  "I'm always open to new opportunities.",
+  "Let's connect and discuss your ideas."
 ];
-let contactTextIndex = 0;
-let contactCharIndex = 0;
-
-function typeContactText() {
-    const contactElement = document.getElementById('contact-typed-text');
-
-    if (contactCharIndex < contactTextArray[contactTextIndex].length) {
-        contactElement.textContent += contactTextArray[contactTextIndex].charAt(contactCharIndex);
-        contactCharIndex++;
-        setTimeout(typeContactText, 100); // Kecepatan mengetik
-    } else if (contactTextIndex < contactTextArray.length - 1) {
-        // Lanjut ke kalimat berikutnya jika masih ada
-        contactTextIndex++;
-        contactCharIndex = 0; // Reset index karakter
-        setTimeout(() => {
-            contactElement.textContent = ""; // Hapus teks sebelum mengetik yang baru
-            typeContactText();
-        }, 1000); // Jeda sebelum mengetik kalimat berikutnya
-    }
-}
-
-// Jalankan fungsi mengetik setelah DOM siap
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(typeContactText, 1000); // Mulai setelah 1 detik
-});
 
   </script>
 
