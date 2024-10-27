@@ -148,25 +148,26 @@ body {
     padding: 100px;
     color: white;
   }
-  
   .projects-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   
   .project-card {
-    background-color: #1a1a1a;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
+    margin: 10px; /* Tambahkan jarak antar card */
+    width: 200px; /* Atur lebar card */
     cursor: pointer;
+    text-align: center; /* Atur teks di tengah */
   }
   
   .project-card img {
-    width: 100%;
-    height: auto;
+    width: 100%; /* Lebar gambar mengikuti lebar card */
+    height: 150px; /* Atur tinggi gambar */
+    object-fit: cover; /* Menjaga rasio aspek gambar */
+    border-radius: 8px; /* Sudut yang membulat */
   }
+  
   
   .project-card:hover {
     transform: scale(1.05);
@@ -194,6 +195,87 @@ body {
   
 
 
+  .contact-section {
+    padding: 50px 20px;
+    text-align: center;
+    color: #fff;
+   /* Gradasi latar belakang */
+}
+
+.contact-header {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    animation: fadeIn 1s; /* Animasi muncul */
+}
+
+.contact-form {
+    display: inline-block;
+    margin-top: 20px;
+    animation: slideIn 1s; /* Animasi geser */
+}
+
+.contact-form input, .contact-form textarea {
+    width: 300px;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0077ff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #005bb5; /* Efek hover */
+}
+
+/* Animasi */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
 
 
-  
+.social-media {
+  display: flex;
+  font-size: 15px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.social-media a {
+  margin: 0 15px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.social-media a:hover {
+  transform: scale(1.5);
+  opacity: 0.8;
+}
+
+
+.social-media i {
+  font-size: 40px;
+  color: white;
+  margin: 0 15px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.social-media i:hover {
+  transform: scale(1.2);
+  opacity: 0.8;
+}
+
+
