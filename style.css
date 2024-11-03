@@ -237,6 +237,9 @@ body {
     background-color: #005bb5; /* Efek hover */
 }
 
+
+/* Gaya input dan textarea */
+
 /* Animasi */
 @keyframes fadeIn {
     from { opacity: 0; }
@@ -280,7 +283,28 @@ body {
 }
 
 @media (max-width: 768px) {
-  .navbar {
-      display: none; /* Menyembunyikan navbar */
-  }
+ 
+  .contact-form {
+    display: block; /* Memastikan form tampil secara vertikal */
+    width: 100%;
+}
+.contact-form {
+  display: block; /* Memastikan form tampil secara vertikal */
+  width: 100%;
+}
+
+.contact-form label {
+  display: block; /* Menempatkan label di atas input */
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%; /* Menyelaraskan input agar memenuhi lebar layar kecil */
+  box-sizing: border-box;
+}
+.navbar {
+  display: none;
+}
 }
