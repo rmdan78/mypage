@@ -4,7 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Portfolio</title>
-
+  <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
+  <script type="text/javascript">
+  (function(){
+  emailjs.init({
+    publicKey: "8Bm8-35EUzg3ugCkQ",
+  });
+  })();
+  </script>
   <!-- CSS -->
   <link rel="stylesheet" href="style.css">
   <!-- Three.js Library -->
@@ -21,6 +30,12 @@
   <!-- Navbar -->
   <div class="navbar-container" id="navbar-container">
     <div class="nama" id="nama">MUHAMMAD RAMDAN</div>
+    <div class="hamburger-menu" onclick="toggleMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+  </div>
+  
     <ul class="navbar" id="navbar">
       <li><a href="#home">HOME</a></li>
       <li><a href="#about">ABOUT</a></li>
@@ -107,21 +122,45 @@
       <input placeholder="Your Message" required></input>
       <button type="submit">Send</button>
   </form>
-<div class="social-media">
-  <a href="https://www.instagram.com/yourusername" target="_blank">
-    <i class="fab fa-instagram"></i>
-  </a>
-  <a href="https://www.linkedin.com/in/yourusername" target="_blank">
-    <i class="fab fa-linkedin"></i>
-  </a>
-  <a href="https://github.com/yourusername" target="_blank">
-    <i class="fab fa-github"></i>
-  </a>
-</div>
+  <div class="social-media">
+    <a href="https://www.instagram.com/yourusername" target="_blank">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/yourusername" target="_blank">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://github.com/yourusername" target="_blank">
+      <i class="fab fa-github"></i>
+    </a>
+  </div>
 </section>
 
   <!-- Initialize Vanta.js -->
   <script>
+     function kirimEmail() {
+            // Ambil nilai dari form
+            const penerima = document.getElementById("penerima").value;
+            const subjek = document.getElementById("subjek").value;
+            const isi_pesan = document.getElementById("isi_pesan").value;
+            const status = document.getElementById("status");
+
+            // Siapkan parameter yang dikirim ke EmailJS
+            const templateParams = {
+                email: penerima,
+                subject: subjek,
+                message: isi_pesan
+            };
+
+            // Kirim email menggunakan EmailJS
+            emailjs.send('service_e6ghl7n', 'template_bpvc9c9', templateParams).then(
+                (response) => {
+                  console.log('SUCCESS!', response.status, response.text);
+                },
+                (error) => {
+                  console.log('FAILED...', error);
+                },
+              );
+        }
  // Initialize Vanta.js
 VANTA.GLOBE({
     el: document.getElementById("vantajs-bg"),
@@ -281,6 +320,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Array teks untuk Projects dan Contact
 const projectsTextArray = [
+  "Here are some of the projects I've worked on.",
+  "Click a project for more details!",
+  "Reach out if you're curious about my work."
+];
+
+const contactTextArray = [
+  "Feel free to reach out to me!",
+  "I'm always open to new opportunities.",
+  "Let's connect and discuss your ideas."
+];
+
+  </script>
+
+</body>
+</html>
+ay = [
   "Here are some of the projects I've worked on.",
   "Click a project for more details!",
   "Reach out if you're curious about my work."
